@@ -1,4 +1,7 @@
 // CODE here for your Lambda Classes
+
+//person constructor
+///////////////////////
 class Person{
     constructor(props){
         this.name=props.name;
@@ -10,7 +13,8 @@ class Person{
         return `Hello my name is %{this.name}, I am from ${this.location}`;
     }
 }
-
+//student constructor 
+////////////////////////
 class Student extends Person{
     constructor(props){
         super(props);
@@ -29,10 +33,8 @@ class Student extends Person{
     }
 }
 
-
-
-
-
+//instructor constructor 
+//////////////////////
 class Instructor extends Person{
     constructor(props){
         super(props);
@@ -48,45 +50,53 @@ class Instructor extends Person{
     }
 }
 
+//PM constructor 
+/////////////////////////
 class ProjectManager extends Instructor{
     constructor(props){
-        super();
+        super(props);
         this.gradClassName=props.gradClassName;
         this.favInstructor=props.favInstructor;
     }
-    standUp(name,channel){
-        return `${name} announces to ${channel}, @channel standy times!`;
+    standUp(channel){
+        return `${this.name} announces to ${channel}, @channel standy times!`;
     }
     debugsCode(name,subject){
-        return `${name} debugs ${this.name}'s code on ${subject}`
+        return `${this.name} debugs ${name}'s code on ${subject}`
     }
 }
+///////////////////////////////////////////////////////////////////////////////////////
+//students
+/////////////////////////
+const roger = new Student({
+    name: 'roger',
+    age: 21,
+    location: 'Escondido',
+    gender: 'male',
+    previousBackground:"Baretender",
+    className:"Web19",
+    favSubjects:['OOP','Functions','biology']
+});
 
-class Student extends Person{
-    constructor(props){
-        super(props);
-        this.previousBackground=props.previousBackground;
-        this.className=props.className;
-        this.favSubjects=props.favSubjects;
-        this.previousBackground=props.previousBackground;
-        this.className=props.className;
-        this.favSubjects=props.favSubjects;
-    }
+const niel = new Student({
+    name: 'niel',
+    age: 34,
+    location: 'Sydney',
+    gender: 'male',
+    previousBackground:"Driver",
+    className:"AND1",
+    favSubjects:['User-Interface','math','tea','Chemistry','RWS']
+});
 
-
-
-
-
-
-
-
+//instructors
+/////////////////////
 const jack = new Instructor({
     name: 'jack',
     age: 67,
     location: 'LA',
     gender: 'male',
-    favLanguage: 'JavaScript',
     specialty: 'Front-end',
+    favLanguage: 'JavaScript',
     catchPhrase: `Its the best!`
   });
 
@@ -95,23 +105,23 @@ const jack = new Instructor({
     location: 'NY',
     age: 45,
     gender: 'female',
-    favLanguage: 'python',
     specialty: 'back-end',
+    favLanguage: 'python',
     catchPhrase: `Can't beat that!`
   });
 
-
-
+//PM
+///////////////////////
   const carlos = new ProjectManager({
     name: 'carlos',
     age: 45,
     location: 'Temecula',
     gender: 'male',
-    favLanguage: 'ruby',
     specialty: 'full-stack',
-    catchPhrase: `Thats all you get!`
-    gradClassName:
-    favInstructor:
+    favLanguage: 'ruby',
+    catchPhrase: `Thats all you get!`,
+    gradClassName: "Web16",
+    favInstructor: "Josh",
   });
 
   const emily = new ProjectManager({
@@ -119,9 +129,20 @@ const jack = new Instructor({
     age: 45,
     location: 'San Diego',
     gender: 'female',
-    favLanguage: 'css',
     specialty: 'UI',
-    catchPhrase: `Who know bros!`
-    gradClassName:
-    favInstructor:
+    favLanguage: 'css',
+    catchPhrase: `Who know bros!`,
+    gradClassName: "UI2",
+    favInstructor: "Kyle"
   });
+
+
+//invokations
+////////////////////////
+ 
+console.log(niel.age); 
+console.log(kate.catchPhrase); 
+console.log(carlos.specialty);
+console.log(roger.listSubjects());
+console.log(emily.standUp('web19'));
+console.log(jack.demo("Javascript IV"));
